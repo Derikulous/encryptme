@@ -26,12 +26,12 @@
           // Then clicks lock down.
         },
         setUrl: function() {
-          this.url = encoder.encrypt();
+          this.url = document.URL + "decode.html?" + this.encrypt()
           console.log(this.url)
           // A URL is given in the dialog box
         },
         replaceMessageWithUrl: function () {
-          document.getElementById("message").value = document.URL.replace("index.html", "decode.html") + "?" + this.url.toString();
+          document.getElementById("message").value = this.url
           // When a user goes to the URL
           // Then a popup occurs and asks for the password
           // When the password is correct, the message is shown
@@ -49,9 +49,8 @@
           this.replaceMessageWithUrl()
         }
       }
-      document.getElementById("encrypt").onclick = function(){
-      encoder.protect()
-    }
+      document.getElementById("encrypt").onclick = function() { encoder.protect() }
     </script>
   </body>
 </html>
+
